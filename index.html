@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A free EMI and loan payoff calculator that estimates monthly payments, total interest, and yearly balances."
+    />
+    <title>EMI Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="calculator-panel" aria-labelledby="tool-title">
+        <div class="title-row">
+          <div>
+            <p class="eyebrow">Free loan calculator</p>
+            <h1 id="tool-title">EMI Planner</h1>
+          </div>
+          <a class="dh-button" href="https://digitalheroesco.com" target="_blank" rel="noreferrer">
+            Built for Digital Heroes
+          </a>
+        </div>
+
+        <form id="loan-form" class="form-grid">
+          <label>
+            <span>Loan amount</span>
+            <div class="money-field">
+              <span>Rs.</span>
+              <input id="amount" name="amount" type="number" min="1000" step="1000" value="750000" required />
+            </div>
+          </label>
+
+          <label>
+            <span>Annual interest rate</span>
+            <div class="suffix-field">
+              <input id="rate" name="rate" type="number" min="0" max="60" step="0.01" value="10.5" required />
+              <span>%</span>
+            </div>
+          </label>
+
+          <label>
+            <span>Loan tenure</span>
+            <div class="suffix-field">
+              <input id="tenure" name="tenure" type="number" min="1" max="40" step="1" value="5" required />
+              <span>years</span>
+            </div>
+          </label>
+
+          <label>
+            <span>One-time extra payment</span>
+            <div class="money-field">
+              <span>Rs.</span>
+              <input id="extra" name="extra" type="number" min="0" step="500" value="0" />
+            </div>
+          </label>
+        </form>
+
+        <div class="summary-grid" aria-live="polite">
+          <article>
+            <span>Monthly EMI</span>
+            <strong id="emi">Rs. 0</strong>
+          </article>
+          <article>
+            <span>Total interest</span>
+            <strong id="interest">Rs. 0</strong>
+          </article>
+          <article>
+            <span>Total payment</span>
+            <strong id="total">Rs. 0</strong>
+          </article>
+          <article>
+            <span>Interest share</span>
+            <strong id="interest-share">0%</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="details-panel" aria-labelledby="breakdown-title">
+        <div class="panel-heading">
+          <h2 id="breakdown-title">Yearly balance</h2>
+          <p id="payoff-note">Based on the current inputs.</p>
+        </div>
+
+        <div class="chart-wrap">
+          <canvas id="balance-chart" width="760" height="260" aria-label="Loan balance chart"></canvas>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Principal paid</th>
+                <th>Interest paid</th>
+                <th>Remaining balance</th>
+              </tr>
+            </thead>
+            <tbody id="amortization-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span id="owner-name">Simran Kumari</span>
+      <a id="owner-email" href="mailto:yadavsimran95126@gmail.com">yadavsimran95126@gmail.com</a>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
